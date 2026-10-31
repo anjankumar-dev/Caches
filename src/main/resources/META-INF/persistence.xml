@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="jpa-mapping" transaction-type="RESOURCE_LOCAL">
+        <!-- Specify your JPA provider -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entity classes (optional if using classpath scanning) -->
+        <!-- <class>com.example.entity.YourEntity</class> -->
+
+        <properties>
+            <!-- JDBC configuration -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cache_db"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="anjanGemini24"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- use create, update, validate, or none -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Enable Hibernate second-level cache -->
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+
+            <!-- Select Hazelcast as the cache provider -->
+            <property name="hibernate.cache.region.factory_class" value="com.hazelcast.hibernate.HazelcastCacheRegionFactory"/>
+
+            <!-- Optional: enable query caching -->
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+
+            <!-- Hazelcast configuration file -->
+            <property name="hibernate.cache.hazelcast.configuration_file_path" value="hazelcast.xml"/>
+
+            <!-- Show cache statistics while testing -->
+            <property name="hibernate.generate_statistics" value="true"/>
+
+
+        </properties>
+    </persistence-unit>
+
+</persistence>

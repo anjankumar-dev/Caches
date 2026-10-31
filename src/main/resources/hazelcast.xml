@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hazelcast xmlns="http://www.hazelcast.com/schema/config">
+    <cluster-name>hibernate-cache-cluster</cluster-name>
+
+    <map name="default">
+        <backup-count>1</backup-count>
+        <time-to-live-seconds>600</time-to-live-seconds>
+        <max-idle-seconds>300</max-idle-seconds>
+    </map>
+
+    <map name="userCache">
+        <time-to-live-seconds>600</time-to-live-seconds>
+        <backup-count>1</backup-count>
+        <max-idle-seconds>120</max-idle-seconds>
+    </map>
+</hazelcast>
